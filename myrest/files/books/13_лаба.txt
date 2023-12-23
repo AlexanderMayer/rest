@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+stack <int> steck;
+ 
+int Menu()
+{
+    int i;
+    cout<<"Выберети пункт меню"<< endl;
+    cout<<"1. Создать и вывести стэк с данным диапазоном"<< endl;
+    cout<<"2. Отсортировать стэк в обратном порядке"<< endl;
+    cout<<"3. Удалить стэк"<< endl;
+    cout<<"4. Выход"<< endl;
+    cin >> i;
+    return i;
+} 
+ 
+void AddStask(int begin, int end)
+{
+    for(int i = begin; i <= end; i++)
+    {
+    steck.push(i);
+    cout << steck.top() << " ";
+    }
+    
+    cout << endl;
+} 
+
+void sort(int begin,int end)
+{
+    while(steck.empty() == false)
+    {
+        steck.pop();   
+    }
+    
+    for(int i = end; i >= begin; i--)
+    {
+    steck.push(i);
+    cout << steck.top() << " ";
+    }
+    
+    cout << endl;
+}
+
+void DeleteStack()
+{
+    while(steck.empty() == false)
+    {
+        steck.pop();   
+    }
+    
+    if(steck.empty() == true) cout << "Стэк удалён"<< endl;
+}
+
+int main()
+{
+    int begin,end;
+    cout<< "Введите начало диапазона - ";
+    cin >> begin;
+    cout<< "Введите конец диапазона - ";
+    cin >> end;
+    while(true)
+    {
+        switch(Menu())
+        {
+            case 1: (AddStask(begin,end)); break;
+            case 2: (sort(begin,end)); break;
+            case 3: (DeleteStack()); break;
+            default: return 0;
+        }
+    }
+}
